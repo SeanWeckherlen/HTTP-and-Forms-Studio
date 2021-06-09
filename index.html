@@ -7,7 +7,7 @@
 			// TODO: create a handler
 			// TODO: register the handler
 			let form = document.getElementById("searchForm");
-			
+			let searchBox = document.getElementById("searchBox");
 			// create an object with keys and values
 			let actions = {
 				"google": "https://www.google.com/search",
@@ -21,23 +21,66 @@
 				let radioInputSelector = document.querySelector("input[name=engine]:checked");
 				let searchEngineChoice = radioInputSelector.value;
 				let actionURL = actions[searchEngineChoice];
+				
+				if(searchBox.value === ""){
+					alert("please give something to search !");
+					event.preventDefault();
+				}
+				
 				// use set.Attribute method
 				form.setAttribute("action", actionURL);
 			});
 		});
 	</script>
+	<style>
+		h1{
+			color: white;
+			background-image: linear-gradient(to bottom, blue, black, gray);
+		}
+		body{
+			border-color: blue;
+			text-align: center;
+			font-family: Georgia, 'Times New Roman', Times, serif;
+			font-size: x-large;
+			background-image: linear-gradient(to right, white, rgb(33, 140, 206));
+		}
+		#googleChoice{
+			color:white;
+			background-image: linear-gradient(to right , yellow, green, red, royalblue);
+		}
+		#duckChoice{
+			color: white;
+			background-image: linear-gradient(to right, blue, green);
+		}
+		#bingChoice{
+			color:white;
+			background-image: linear-gradient(to left, red, gray);
+		}
+		#askChoice{
+			color: white;	
+			background-image: linear-gradient(to left, rgb(41, 41, 104),yellow);
+
+		}
+
+
+	</style>
 </head>
 
 <body>
 
 	<form id="searchForm">
-		<!-- TODO: add form elements -->
-		<label>Search Text:<input type="text" name="q" /></label>
-		<label><input type="radio" name="engine" value="google" />Google</label>
-		<label><input type="radio" name="engine" value="duckDuckGo" />DuckDuckGo</label>
-		<label><input type="radio" name="engine" value="bing" />Bing</label>
-		<label><input type="radio" name="engine" value="ask" />Ask</label>
 
+		<h1>CHOOSE YOUR SEARCH ENGINE</h1>
+		<!-- TODO: add form elements -->
+		<label>Search Text:<input type="text" name="q" id="searchBox"/></label>
+		<div>
+		<br />
+		<label id= "googleChoice"><input type="radio" name="engine" value="google" checked />Google</label>
+		<label id="duckChoice"><input type="radio" name="engine" value="duckDuckGo" />DuckDuckGo</label>
+		<label id="bingChoice"><input type="radio" name="engine" value="bing" />Bing</label>
+		<label id="askChoice"><input type="radio" name="engine" value="ask" />Ask</label>
+		</div>
+		<br />
 		<button>Go!</button>
 	</form>
 
